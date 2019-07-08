@@ -11,7 +11,14 @@ const symbolVariable: symbol = Symbol();
 // возвращающую его факториал по всем правилам тайпскрипта
 
 function factorial(value: number): number {
-  return value === 0 ? 1 : value * factorial(value - 1);
+  if (value === 0) {
+    return 1;
+  } else if (value < 0) {
+    console.log("Факториала от отрицательного числа не существует!");
+    return 0;
+  } else {
+    return value * factorial(value - 1);
+  }
 }
 
 console.log("Factorial:", factorial(5));
@@ -20,8 +27,13 @@ console.log("Factorial:", factorial(5));
 // возврашающую массив с числами фибоначи до этого порядкового числа
 
 function fibonacci(number: number): Array<number> {
-  let i: number;
   const fibonacciArray: number[] = [1, 1];
+  let i: number;
+
+  if (number <= 0) {
+    console.log("Не работаю с отрицательными числами!");
+    return [];
+  }
 
   for (i = 2; i < number; i++) {
     fibonacciArray[i] = fibonacciArray[i - 1] + fibonacciArray[i - 2];
